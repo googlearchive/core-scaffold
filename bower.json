@@ -1,0 +1,10 @@
+{
+  "name": "core-scaffold",
+  "private": true,
+  "dependencies": {
+    "core-toolbar": "Polymer/core-toolbar#master",
+    "core-drawer-panel": "Polymer/core-drawer-panel#master",
+    "core-layout": "Polymer/core-layout#master",
+    "core-icon-button": "Polymer/core-icon-button#master"
+  }
+}
