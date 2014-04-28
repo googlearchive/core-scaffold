@@ -79,6 +79,14 @@ core-scaffold (WIP)
     
     togglePanel: function() {
       this.$.drawerPanel.togglePanel();
+    },
+    
+    openDrawer: function() {
+      this.$.drawerPanel.selected = 'drawer';
+    },
+    
+    closeDrawer: function() {
+      this.$.drawerPanel.selected = 'main';
     }
     
   });
