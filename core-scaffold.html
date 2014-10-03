@@ -79,7 +79,7 @@ To have the content fits to the main area, use `fit` attribute.
     
   </style>
 
-  <core-drawer-panel id="drawerPanel" narrow="{{narrow}}" responsiveWidth="{{responsiveWidth}}">
+  <core-drawer-panel id="drawerPanel" narrow="{{narrow}}" drawerWidth="{{drawerWidth}}" rightDrawer="{{rightDrawer}}" responsiveWidth="{{responsiveWidth}}" disableSwipe="{{disableSwipe}}">
 
     <div vertical layout drawer>
 
@@ -124,6 +124,16 @@ To have the content fits to the main area, use `fit` attribute.
      */
     
     publish: {
+      
+      /**
+       * Width of the drawer panel.
+       *
+       * @attribute drawerWidth
+       * @type string
+       * @default '256px'
+       */
+      drawerWidth: '256px',
+      
       /**
        * When the browser window size is smaller than the `responsiveWidth`, 
        * `core-drawer-panel` changes to a narrow layout. In narrow layout, 
@@ -134,6 +144,24 @@ To have the content fits to the main area, use `fit` attribute.
        * @default '600px'
        */    
       responsiveWidth: '600px',
+      
+      /**
+       * If true, position the drawer to the right.
+       *
+       * @attribute rightDrawer
+       * @type boolean
+       * @default false
+       */
+      rightDrawer: false,
+
+      /**
+       * If true, swipe to open/close the drawer is disabled.
+       *
+       * @attribute disableSwipe
+       * @type boolean
+       * @default false
+       */
+      disableSwipe: false,
   
       /**
        * Used to control the header and scrolling behaviour of `core-header-panel`
