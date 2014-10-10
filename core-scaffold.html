@@ -27,9 +27,29 @@ Example:
     </core-scaffold>
 
 Use `mode` to control the header and scrolling behavior of `core-header-panel`
-and `responsiveWidth` to change the layout of the scaffold.
+and `responsiveWidth` to change the layout of the scaffold.  Use 'disableSwipe'
+to disable swipe-to-open on toolbar.
 
-To have the content fits to the main area, use `fit` attribute.
+Use `rightDrawer` to move position of folding toolbar to the right instead of
+left (default).  This will also position content to the left of the menu button
+instead of the right.  You can use `flex` within your `tool` content to push the menu
+button to the far right:
+
+    <core-scaffold rightDrawer>
+      <div tool flex >Title</div>
+    </core-scaffold>
+    
+You may also add `middle` or `bottom` classes to your `tool` content when using tall
+modes to adjust vertical content positioning in the core-toolbar (e.g. when using 
+mode="waterfall-tall"):
+
+    <core-scaffold rightDrawer mode="waterfall-tall">
+      <div tool flex >Title</div>
+      <div tool horizontal layout flex center-justified class="middle">Title-middle</div>
+      <div tool horizontal layout flex end-justified class="bottom">Title-bottom</div>
+    </core-scaffold>
+
+To have the content fit to the main area, use `fit` attribute.
 
     <core-scaffold>
       <core-header-panel navigation flex mode="seamed">
@@ -90,8 +110,13 @@ To have the content fits to the main area, use `fit` attribute.
     <core-header-panel id="headerPanel" main mode="{{mode}}">
 
       <core-toolbar>
-        <core-icon-button id="menuButton" icon="menu" on-tap="{{togglePanel}}"></core-icon-button>
+        <template if="{{!rightDrawer}}">
+          <core-icon-button id="menuButton" icon="menu" on-tap="{{togglePanel}}"></core-icon-button>
+        </template>
         <content select="[tool]"></content>
+        <template if="{{rightDrawer}}">
+          <core-icon-button id="menuButton" icon="menu" on-tap="{{togglePanel}}"></core-icon-button>
+        </template>
       </core-toolbar>
       
       <content select="*"></content>
@@ -146,7 +171,8 @@ To have the content fits to the main area, use `fit` attribute.
       responsiveWidth: '600px',
       
       /**
-       * If true, position the drawer to the right.
+       * If true, position the drawer to the right. Also place menu icon to
+       * the right of the content instead of left.
        *
        * @attribute rightDrawer
        * @type boolean
